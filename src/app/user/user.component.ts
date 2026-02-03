@@ -1,25 +1,20 @@
-import { Component, EventEmitter, Input, input, Output} from '@angular/core';
-
-interface User {
-    id: string;
-    avatar: string;
-    name: string;
-};
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-user',
   standalone: true,
   imports: [],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
 })
 export class UserComponent {
-   @Input({required: true}) user!: User;
-   @Output() select = new EventEmitter<string>();
+  @Input({ required: true }) user!: User;
+  @Output() select = new EventEmitter<string>();
 
-  public get imagePath()  {
-      return 'assets/users/' + this.user.avatar
-    }
+  public get imagePath() {
+    return 'assets/users/' + this.user.avatar;
+  }
 
   public onSelectUser(): void {
     this.select.emit(this.user.id);
