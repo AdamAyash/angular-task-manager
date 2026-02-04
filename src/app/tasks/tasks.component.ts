@@ -53,14 +53,16 @@ export class TasksComponent {
     this.isAddingTask = true;
   }
 
-  onNewAddTask(taskData: NewTaskData) {
-    this.tasks.push({
+  public onNewAddTask(taskData: NewTaskData) {
+    this.tasks.unshift({
       id: new Date().getTime().toString(),
       userId: this.userId,
       title: taskData.title,
       summary: taskData.summary,
-      dueDate: taskData.date
+      dueDate: taskData.date,
     });
+
+    this.isAddingTask = false;
   }
 
   public onCancelled() {
